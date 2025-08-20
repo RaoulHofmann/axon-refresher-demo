@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  axonserver-1:
+    image: docker.axoniq.io/axoniq/axonserver:latest-jdk-24
+    pull_policy: always
+    hostname: axonserver-1
+    environment:
+      - axoniq_console_authentication=51582953-0-asc:3ed6e90a762b4af6893791c5a67ac593
+    ports:
+      - '8024:8024'
+      - '8124:8124'
+      - '8224:8224'
+    networks:
+      - axon-server
+
+networks:
+  axon-server:

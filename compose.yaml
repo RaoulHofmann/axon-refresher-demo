@@ -1,0 +1,8 @@
+services:
+  axon-demo:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app    # mount source for live reload
+      - ~/.m2:/root/.m2   # cache Maven deps
