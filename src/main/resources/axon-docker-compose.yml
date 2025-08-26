@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   axonserver-1:
-    image: docker.axoniq.io/axoniq/axonserver:latest-jdk-24
+    image: docker.axoniq.io/axoniq/axonserver:latest-jdk-17
     pull_policy: always
     hostname: axonserver-1
     environment:

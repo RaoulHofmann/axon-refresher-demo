@@ -5,21 +5,25 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TodoResponse {
+public class TodoRequest {
 
-    private String todoId;
+    @Builder.Default
+    private String todoId = UUID.randomUUID().toString();
     private String title;
     private String description;
-    private boolean completed;
+    @Builder.Default
+    private boolean completed = false;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
-    private Instant createdAt;
+    @Builder.Default
+    private Instant createdAt = Instant.now();
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private Instant updatedAt;
@@ -27,8 +31,8 @@ public class TodoResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private Instant completedAt;
 
-    public static TodoResponse from(TodoEntity entity) {
-        return new TodoResponse(
+    public static TodoRequest from(TodoEntity entity) {
+        return new TodoRequest(
                 entity.getTodoId(),
                 entity.getTitle(),
                 entity.getDescription(),
@@ -41,7 +45,7 @@ public class TodoResponse {
 
     @Override
     public String toString() {
-        return "TodoResponse{" +
+        return "TodoRequest{" +
                 "todoId='" + todoId + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
