@@ -22,7 +22,6 @@ import java.time.Instant;
 @Aggregate
 @Getter
 @NoArgsConstructor
-// TODO: Implement the command handler methods to handle the commands
 public class TodoAggregate {
 
     @AggregateIdentifier
